@@ -1,5 +1,6 @@
 from pathlib import Path
 from environs import Env
+import django_heroku
 
 env = Env()
 env.read_env()
@@ -132,3 +133,5 @@ LOGOUT_REDIRECT_URL = 'home'
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+django_heroku.settings(locals())
