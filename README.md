@@ -9,9 +9,7 @@ blog/ - This contains all configuration code for the site
 
 pages/ - This folder contains the view, model and url settings for the home page. 
 
-posts/ - This folder houses all the views, models and templates that enable the full
-
-create, read, update and delete properties of the site
+posts/ - This folder houses all the views, models and templates that enable the full create, read, update and delete properties of the site
 
 templates/ - This folder contains all HTML templates used in the site. Styling was achieved with Bootstrap CDN, hence the absence of a base.css file.
 
