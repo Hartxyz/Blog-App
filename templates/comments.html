@@ -1,0 +1,16 @@
+{% extends 'base.html' %} 
+
+{% block title %} Add New Comment for {{ posts.title }} {% endblock title %} 
+
+{% block content %} 
+    <h2>Leave a comment</h2>
+    <div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="card-body">
+            {{ form.as_p }}
+            </div>
+            <button class="btn btn-success ml-2" type="submit">Save</button>
+        </form>
+    </div>
+{% endblock content %}

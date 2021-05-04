@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="article-entry">
+        <h2>{{ posts.title }}</h2>
+        <p>by {{ posts.author }} | {{ posts.created_on }}</p>
+        <p>{{ posts.body }}</p>
+    </div>
+    <p>
+        <a href="{% url 'post_edit' posts.pk %}">Edit</a> |
+        <a href="{% url 'post_delete' posts.pk %}">Delete</a>
+    </p>
+    <div>
+        <h6>Comments for {{ posts.title }}</h6>
+        {% for comment in posts.comments.all %}
+            <p>
+                <span>
+                    {{ comment.author }} | {{ comment.created_on }}  &middot;
+                </span>
+            {{ comment }}
+            </p>
+        {% endfor %}
+        <p>
+            <a href="{% url 'comments' posts.pk %}">+ New Comment</a>
+        </p>
+    </div>
+    <p>Back to <a href="{% url 'post_list' %}">All Articles</a>.</p>
+{% endblock content %}

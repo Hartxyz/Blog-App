@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Posts{% endblock title %}
+
+{% block content %}
+    <h2>All Published Posts</h2>
+    {% for posts in object_list %}
+        <div  class="card">
+            <div class="card-header">
+                <span class="font-weight-bold">
+                    <a href="{% url 'post_detail' posts.pk %}">{{ posts.title }}</a>
+                </span> 
+                &middot;
+                <span class="text-muted">
+                    by {{ posts.author }} | {{ posts.created_on }}
+                </span>
+            </div>
+            <div class="card-body">
+                {{ posts.body }}
+            </div>
+            <div class="card-footer text-center text-muted">
+                <a href="{% url 'post_edit' posts.pk %}">Edit</a> | 
+                <a href="{% url 'post_delete' posts.pk %}">Delete</a>
+            </div>
+            <div>
+                {% for comment in posts.comments.all %}
+                    {{posts.commented_post.count}}
+                    <p class="card-body">
+                        <span class="text-muted">
+                            {{ comment.author }} | {{ comment.created_on }} &middot;
+                        </span>
+                    {{ comment }}
+                    </p>
+                {% endfor %}
+            </div>
+        </div>
+        <br />
+    {% endfor %} 
+{% endblock content %} 
